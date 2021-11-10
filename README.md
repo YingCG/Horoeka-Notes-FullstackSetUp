@@ -11,7 +11,7 @@
 •	npm run dev
 •	npm init to create package.json
 ```
-Knex Database
+### Knex Database
 ```
 npm install sqlite3
 npx knex migrate:latest
