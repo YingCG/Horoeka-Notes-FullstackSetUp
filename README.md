@@ -220,9 +220,8 @@ function doSomethingById(elementID, db = connection){
 }
 
 ```
-`.where('name_in_column', alia) `
-
-`.select('what we select') `
+.where('name_in_column', alia)
+.select('what we select')
 
 
 ```
@@ -239,9 +238,8 @@ function getCommentById(commentId, db = connection) {
 }
 
 ```
-`.insert() `
-
-`.then() `
+.insert()
+.then() 
 
 ```
 function addPost(post, db = connection) {
@@ -266,7 +264,7 @@ function addPost(post, db = connection) {
         )
 }
 ```
-`.update() `
+.update()
 ```
 function updateComment(commentId, updatedComment, db = connection) {
     return db('Comments')
@@ -278,7 +276,7 @@ function updateComment(commentId, updatedComment, db = connection) {
 }
 
 ```
-`.delete() `
+.delete()
 ```
 function deteleComment(commentId, db = connection){
     return db('Comments')
