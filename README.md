@@ -1,4 +1,4 @@
-# Notes to Full stack react app
+# Horoeka Notes to Full stack react app
 
 ##  Setting up
 
