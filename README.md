@@ -1,4 +1,4 @@
-# Full stack react app
+# Notes to Full stack react app
 
 ##  Setting up
 
