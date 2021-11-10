@@ -365,9 +365,9 @@ router.delete('/:id', (req, res) => {
 ###  Public
 `images`
 
-``` 
+
 All images go here
-```
+
 
 `index.js`
 ```
@@ -387,9 +387,9 @@ server.listen(port, () => {
 
 `Bundle.js`
 
-```
+
 lot of things here
-```
+
 
 #
 ## Testing
