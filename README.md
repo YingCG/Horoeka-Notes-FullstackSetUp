@@ -239,7 +239,7 @@ function getCommentById(commentId, db = connection) {
 
 ```
 .insert()
-.then() 
+.then()  ---- .then is the promise /response u getting back from the request
 
 ```
 function addPost(post, db = connection) {
