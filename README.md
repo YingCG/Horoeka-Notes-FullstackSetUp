@@ -4,17 +4,17 @@
 
 ### Package install
 
-```
+```sh
 •	npm install
-•	npm install express
-•	npm run webpack
 •	npm run dev
-•	npm init to create package.json
+•	npm init # to create package.json
 ```
 ### Knex Database
-```
-npm install sqlite3
+```sh
+npm install knex sqlite3
+npx knex migrate:make table_name
 npx knex migrate:latest
+npx knex seed:make table_name
 npx knex seed:run
 ```
  
@@ -23,7 +23,7 @@ npx knex seed:run
 1. Components
 
 `App.jsx` | `ListOfThings.jsx` | `SingleThing.jsx`
-```
+```js
 import React from 'react'
 import { Route } from 'react-router-dom'
 
@@ -56,7 +56,7 @@ export default App
 
 2.	Index.js
 
-```
+```js
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router } from 'react-router-dom'
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ```
 3.	Webpack.config.js
-```
+```js
 const path = require('path')
 
 module.exports = {
@@ -102,10 +102,10 @@ module.exports = {
 #
 ## Rest API
 1.	Api.js
-```
+```js
 import request from 'superagent'
 
-const serverURL = 'http://localhost:3000/api/v1'
+const serverURL = '/api/v1'
 
 export function getSomething () {
   return request
@@ -128,7 +128,7 @@ export function getSomething () {
 
 `2. knexfile.js`
 
-```
+```js
 module.exports = {
   development: {
     client: 'sqlite3',
@@ -146,11 +146,11 @@ module.exports = {
   }
 }
 ```
-`3. npm run knex migrate: make tablename_with_s`
+`3. npm run knex migrate:make tablename_with_s`
 
 * create schema at migrations folder
 
-```
+```js
 exports.up = function (knex) {
   return knex.schema.createTable('films', function (table) {
     table.increments('id').primary()
@@ -163,18 +163,20 @@ exports.down = function (knex) {
   return knex.schema.dropTable('films')
 }
 ```
-`4. npm run knex migrate: latest`
 
-`5. npm run knex seed: make tablename_with_s`
-* the parent table shall make first, good to name with number
+```sh
+npm run knex migrate:latest
 
-`6. npm run knex seed: run`
+# the parent table shall make first, good to name with number
+npm run knex seed:make tablename_with_s
 
+npm run knex seed: run
+```
 #
 ## Server
 
 `index.js`
-```
+```js
 const server = require('./server')
 
 const PORT = process.env.PORT || 3000
@@ -186,7 +188,7 @@ server.listen(PORT, function () {
 ```
 
 `server.js`
-```
+```js
 const path = require('path')
 const express = require('express')
 
@@ -201,7 +203,7 @@ module.exports = server
 `db.js`
 
 
-```
+```js
 const config = require('./knexfile').development
 const connection = require('knex')(config)
 
@@ -210,21 +212,18 @@ module.exports = {
 }
 
 function doSomethingById(elementID, db = connection){
-  return db('TableName_s')
+  return db('tableName_s')
   .select()
   .then( ()=> { return db('')})
   .insert()
   .where('post_id', postId)
-  .update
+  .update()
   .first()
 }
 
-```
 .where('name_in_column', alia)
 .select('what we select')
 
-
-```
 function getCommentById(commentId, db = connection) {
     return db('Comments')
         .where('id', commentId)
@@ -238,10 +237,10 @@ function getCommentById(commentId, db = connection) {
 }
 
 ```
-.insert()
+`.insert()`
 .then()  ---- .then is the promise /response u getting back from the request
 
-```
+```js
 function addPost(post, db = connection) {
     return db('Posts')
         .insert(
@@ -265,9 +264,9 @@ function addPost(post, db = connection) {
 }
 ```
 .update()
-```
+```js
 function updateComment(commentId, updatedComment, db = connection) {
-    return db('Comments')
+    return db('comments')
         .where('id', commentId)
         .update({
             post_id: updatedComment.postId,
@@ -277,9 +276,9 @@ function updateComment(commentId, updatedComment, db = connection) {
 
 ```
 .delete()
-```
+```js
 function deteleComment(commentId, db = connection){
-    return db('Comments')
+    return db('comments')
     .where('id', commentId)
     .delete()
 }   
@@ -287,7 +286,7 @@ function deteleComment(commentId, db = connection){
 
 ###  Routes
 * GET   //  to read database
-```
+```js
 
 router.get('/:postId/comments', (req, res) => {
   const postId = Number(req.params.postId)
@@ -303,7 +302,7 @@ router.get('/:postId/comments', (req, res) => {
 
 * POST  // to add thing to database
 
-```
+```js
 
 router.post('/:postId/comments', (req, res) => {
   const postId = Number(req.params.postId)
@@ -320,7 +319,7 @@ router.post('/:postId/comments', (req, res) => {
 
 * PATCH    //  to update piece of database
 * PUT   // to update entire database or 
-```
+```js
 
 router.patch('/:id', (req, res) => {
 
