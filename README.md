@@ -362,6 +362,26 @@ router.delete('/:id', (req, res) => {
 
 ```
 ###  Public
+`index.html`
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="/main.css" rel="stylesheet">
+  <title>React and web APIs!</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="/bundle.js"></script>
+</body>
+</html>
+
+```
+`main.css`
+
 `images`
 
 
@@ -390,7 +410,27 @@ server.listen(port, () => {
 lot of things here
 
 
+`Server.js`
+```
+const path = require('path')
+const express = require('express')
+
+const widgets = require('./routes/widgets')
+
+const server = express()
+server.use(express.json())
+server.use(express.static(path.join(__dirname, 'public')))
+
+server.use('/api/v1/widgets', widgets)
+
+module.exports = server
+
+```
+
+`package.json`
 #
+
+
 ## Testing
 ```
 Testing routes with SuperTest
