@@ -1,0 +1,65 @@
+{
+  "name": "starter",
+  "version": "0.2.1",
+  "description": "React components consuming Web APIs",
+  "repository": "https://github.com/dev-academy-challenges/react-to-web-api.git",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server",
+    "test": "jest --watchAll",
+    "dev": "run-p dev:client dev:server",
+    "dev:client": "webpack --watch --config client/webpack.config.js",
+    "dev:server": "nodemon --watch server",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "lint": "eslint --ext .js,.jsx ."
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "superagent": "^6.1.0",
+    "supertest": "^6.0.1",
+    "webpack": "^5.10.3",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "@babel/register": "^7.12.10",
+    "express": "^4.17.1",
+    "knex": "^0.21.13",
+    "sqlite3": "^5.0.0"
+  }
+}
